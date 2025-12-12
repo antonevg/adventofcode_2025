@@ -15,7 +15,7 @@ def sub_with_wrap(value, increment):
 liste = txt_to_list("input_test.txt")
 
 
-def rotation():
+def rotation(): #do not work
     init = 50
     count = 0
 
