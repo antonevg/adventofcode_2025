@@ -6,13 +6,13 @@ def txt_to_list(path):
         return [line.strip() for line in f if line.strip()]
 
 def add_with_wrap(value, increment):
-    return (value+increment)%100
+    return (value+increment)%100, (value+increment)//100
 
 def sub_with_wrap(value, increment):
-    return (value-increment)%100
+    return (value-increment)%100, abs((value-increment)//100)
 
 
-liste = txt_to_list("input.txt")
+liste = txt_to_list("input_test.txt")
 
 
 def rotation():
@@ -24,12 +24,13 @@ def rotation():
         valeur = int(elem[1:])
 
         if direction == 'R':
-            init = add_with_wrap(init, valeur)
+            count += add_with_wrap(init, valeur)[1]
+            init = add_with_wrap(init, valeur)[0]
         elif direction == 'L':
-            init = sub_with_wrap(init, valeur)
-        if init == 0:
-            count += 1
+            count += sub_with_wrap(init, valeur)[1]
+            init = sub_with_wrap(init, valeur)[0]
+        print(init)
+        print(count)
     return count
 
 print('Le mot de passe est ' + str(rotation()))
-
